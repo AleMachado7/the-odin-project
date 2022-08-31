@@ -1,0 +1,10 @@
+body {
+    background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
