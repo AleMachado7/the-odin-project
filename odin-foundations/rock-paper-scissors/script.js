@@ -1,3 +1,5 @@
+// GAME
+
 function getComputerChoice() {
     const choices = ['Rock', 'Paper', 'Scissors'];
     let random = Math.floor(Math.random() * choices.length);
@@ -5,8 +7,9 @@ function getComputerChoice() {
     return choices[random]
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (String(playerSelection).toLowerCase() === String(computerSelection).toLowerCase()) {
+function playRound(playerSelection) {
+    let computerSelection = getComputerChoice()
+    if (playerSelection.toLowerCase() === computerSelection.toLowerCase()) {
         return `It's a tie. Your choice was ${playerSelection} and the computer choice was ${computerSelection} too.`
     } else if (playerSelection.toLowerCase() === "rock"){
         if (computerSelection.toLowerCase() === "scissors"){
@@ -26,32 +29,39 @@ function playRound(playerSelection, computerSelection) {
         } else {
             return `You lost! ${computerSelection} beats ${playerSelection}.`
         }
+    } else if (playerSelection.toLowerCase() === "fuck it") {
+        return  `F##k the computer, you won!`
     } else {
-        return `You entered a invalid input: ${player}.`
+        return 'Invalid input, please choose a valid option.'
     }
 }
 
 function game() {
-    let player_score = 0
-    let computer_score = 0
+    let playerScore = 0
+    let computerScore = 0
 
     for (i = 0; i < 5; i++) {
-        let player = prompt("Please enter your choice #-- Rock -- Paper -- Scissors --#:");
+        let player = document.getElement
         let computer = getComputerChoice()
         let result = playRound(player, computer)
     
-        result.includes("won") ? player_score++ : result.includes("lost") ? computer_score++ : null
+        result.includes("won") ? playerScore++ : result.includes("lost") ? computerScore++ : null
         console.log(`Round result: ${result}`)
     }
 
-    if (player_score > computer_score) {
-        console.log(`The player has won!\nGame final results: Player Score [[ ${player_score} ]] \t Computer Score [[ ${computer_score} ]].`)
-    } else if (computer_score > player_score) {
-        console.log(`The computer has won!\nGame final results: Player Score [[ ${player_score} ]] \t Computer Score [[ ${computer_score} ]].`)
+    if (playerScore > computerScore) {
+        console.log(`The player has won!\nGame final results: Player Score [[ ${playerScore} ]] \t Computer Score [[ ${computerScore} ]].`)
+    } else if (computerScore > playerScore) {
+        console.log(`The computer has won!\nGame final results: Player Score [[ ${playerScore} ]] \t Computer Score [[ ${computerScore} ]].`)
     } else {
-        console.log(`Its a tie!!!\nGame final results: Player Score [[ ${player_score} ]] \t Computer Score [[ ${computer_score} ]].`)
+        console.log(`Its a tie!!!\nGame final results: Player Score [[ ${playerScore} ]] \t Computer Score [[ ${computerScore} ]].`)
     }
 }
     
 
-game()
+const rockBtn = document.getElementById('rock-btn');
+const paperBtn = document.getElementById('paper-btn');
+const scissorsBtn = document.getElementById('scissors-btn');
+const fuckBtn = document.getElementById('fck-btn');
+
+rockBtn.addEventListener('click', playRound)
